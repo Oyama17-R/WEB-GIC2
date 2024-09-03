@@ -13,43 +13,55 @@ function showSlide(index) {
     document.querySelector('.slides').style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
-document.querySelector('.next').addEventListener('click', () => {
-    showSlide(currentSlide + 1);
-});
-
-document.querySelector('.prev').addEventListener('click', () => {
-    showSlide(currentSlide - 1);
-});
-
-// Optional: Automatic slide transition
-setInterval(() => {
-    showSlide(currentSlide + 1);
-}, 10000); // Change slide every 10 seconds
-
-function toggleMenu() {
-    document.querySelector('header').classList.toggle('menu-open');
-}
-
+// Pastikan DOM telah dimuat sebelum menambahkan event listener
 document.addEventListener('DOMContentLoaded', function() {
-    const testimonialSections = document.querySelectorAll('.testimonial-left, .testimonial-right');
-    console.log(testimonialSections); // Debugging: pastikan elemen dipilih
+    const nextButton = document.querySelector('.next');
+    const prevButton = document.querySelector('.prev');
+    const slidesContainer = document.querySelector('.slides');
     
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          console.log('Element is intersecting:', entry.target); // Debugging
-          entry.target.classList.add('show');
-        }
-      });
-    }, {
-      threshold: 0.1,
-    });
-  
-    testimonialSections.forEach(section => {
-      observer.observe(section);
-    });
-});
+    // Cek apakah elemen-elemen tersebut ada di DOM sebelum menambahkan event listener
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+    }
 
-  
-  
-  
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+    }
+
+    // Optional: Automatic slide transition
+    if (slidesContainer) {
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 10000); // Change slide every 10 seconds
+    }
+
+    // Toggle Menu
+    function toggleMenu() {
+        const header = document.querySelector('header');
+        if (header) {
+            header.classList.toggle('menu-open');
+        }
+    }
+
+    // Scroll-triggered animations
+    const testimonialSections = document.querySelectorAll('.testimonial-left, .testimonial-right');
+    if (testimonialSections.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, {
+            threshold: 0.1,
+        });
+        
+        testimonialSections.forEach(section => {
+            observer.observe(section);
+        });
+    }
+});
