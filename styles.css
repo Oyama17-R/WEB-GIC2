@@ -1,0 +1,700 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic styling */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
+  position: relative; /* Ensure relative positioning for z-index */
+  min-height: 100vh;
+}
+
+header {
+  background: #7e0303;
+  padding: 1rem 0;
+  height: 100px; /* Tinggi header tetap */
+  overflow: hidden; /* Mencegah header meluas */
+
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%; /* Agar konten tetap terpusat secara vertikal */
+}
+
+.logo img {
+  max-height: 90px; /* Batasi tinggi logo */
+  width: auto;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Default Navbar Style */
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Hide menu toggle button on larger screens */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  z-index: 1000; /* Pastikan tombol terlihat */
+}
+
+/* Media Query for Mobile Screens */
+@media screen and (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -250px; /* Hide the sidebar initially on the right */
+    width: 250px;
+    height: 100%;
+    background-color: #4c4c4c;
+    padding-top: 20px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    text-align: center;
+  }
+
+  nav ul li {
+    margin: 20px 0;
+  }
+
+  nav ul li a {
+    color: white;
+    margin-top: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+  }
+
+  .menu-open nav ul {
+    right: 0; /* Slide menu from the right */
+  }
+}
+
+
+
+
+/* Slider styling */
+.slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Set aspect ratio to 16:9 */
+  margin-bottom: 0; /* Add margin to separate from content */
+  z-index: 5; /* Ensure slider is above content */
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 70%; /* Ensure slides take up the full height of the slider */
+  position: absolute; /* Position absolutely within the slider container */
+  top: 0;
+  left: 0;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%; /* Ensure slide takes up the full height of the slider */
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure image covers the area */
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: -40px;
+  left: 40px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 90%;
+  z-index: 10; /* Ensure caption is above other slider elements */
+}
+
+.slide-caption h1 {
+  font-size: 2rem; /* Adjusted font size for larger screens */
+}
+
+.slide-caption p {
+  font-size: 1.2rem; /* Adjusted font size for larger screens */
+}
+
+button {
+  position: absolute;
+  top: 30%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 15; /* Ensure buttons are above caption */
+  transform: translateY(-50%);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+/* Content styling */
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin-top: -80px; /* Mengurangi jarak antara slider dan konten */
+  z-index: 0; /* Ensure content is below the slider */
+  position: relative; /* Ensure content is below the slider */
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 1rem;
+  padding: 2.5rem;
+  width: 300px;
+  text-align: center;
+}
+
+.card h2 {
+  margin-bottom: 1rem;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .slide-caption h1 {
+    font-size: 1.5rem;
+  }
+
+  .slide-caption p {
+    font-size: 1rem;
+  }
+  
+  .content3 {
+    flex-direction: column; /* Stack vertically on small screens */
+  }
+  
+  .content3 .image, .content3 .caption {
+    order: unset; /* Reset order to stack naturally */
+    padding: 0; /* Remove padding on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 0.5rem 0;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .slide-caption h1 {
+    font-size: 1rem;
+  }
+
+  .slide-caption p {
+    font-size: 0.8rem;
+  }
+
+  .content3 {
+    flex-direction: column; /* Stack vertically on small screens */
+  }
+}
+
+/* Section with Picture on Right and Caption on Left */
+.content2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 40px 0;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  margin-bottom: 80px;
+}
+
+.content2 .caption {
+  flex: 1;
+  padding-right: 20px;
+  order: 1; /* Keep caption first on larger screens */
+}
+
+.content2 .image {
+  flex: 1;
+  order: 2;
+}
+
+.content2 img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Section with Picture on Left and Caption on Right */
+.content3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 40px 0;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  margin-bottom: 80px;
+}
+
+.content3 .image {
+  flex: 1;
+  padding-right: 20px;
+  order: 1; /* Keep image first */
+}
+
+.content3 .caption {
+  flex: 1;
+  order: 2; /* Move caption to the right */
+  padding-left: 20px; /* Add some padding to the left of the caption */
+}
+
+.content3 img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Footer styling */
+footer {
+  background: #4c4c4c;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  bottom: 10%;
+  width: 100%;
+  z-index: 10; /* Ensure footer is above content */
+  
+}
+
+/* Kontainer utama untuk konten footer */
+.footer-content {
+  display: flex;
+  flex-direction: column; /* Mengatur elemen-elemen dalam kolom */
+  justify-content: center;
+  align-items: flex-start; /* Menempatkan elemen di awal kiri */
+  padding: 60px 20px; /* Mengatur jarak atas-bawah dan kiri-kanan */
+  position: relative;
+}
+
+/* Penataan logo footer */
+.footer-logo {
+  margin-right: 20px; /* Memberi jarak antara logo dan alamat */
+}
+
+.footer-logo img {
+  width: 150px;
+  height: auto;
+}
+
+/* Penataan alamat footer */
+.footer-address {
+  flex: 1;
+  text-align: left;
+}
+
+/* Penataan baris atas (logo dan alamat) */
+.footer-top {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Memastikan elemen memenuhi lebar kontainer */
+  margin-bottom: 20px; /* Jarak antara alamat dan ikon sosial */
+}
+
+/* Penataan ikon sosial footer */
+.footer-social {
+  display: flex;
+  padding: 0 166px;
+  justify-content: flex-start; /* Menyelaraskan ikon di awal kiri */
+  width: 100%; /* Memastikan ikon sosial memenuhi lebar kontainer */
+  
+}
+
+.footer-social a img {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.footer-social a img:hover {
+  transform: scale(1.2);
+}
+
+/* Penataan teks di bagian bawah footer */
+footer p {
+  margin-top: 20px;
+  font-size: 0.875rem;
+}
+
+
+/* Styling for .end */
+.end {
+  background: #333; /* Darker than main footer background */
+  color: #fff;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  margin: 0; /* Remove default margin */
+  width: 100vw; /* Full width */
+  position: relative;
+  left: 49.4%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  bottom: 10%; /* Ensure it is at the bottom */
+  text-align: center; /* Center text */
+}
+
+/* style about */
+.section-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.section-content {
+  text-align: left;
+  padding: 0 30px;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.section-content p {
+  margin-bottom: 20px;
+}
+
+.section-content h2 {
+  text-align: center; /* Center-aligns the <h2> element */
+  margin: 10px
+   /* Optional: removes default margin around the heading */
+}
+
+.section-logo img {
+  width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.sejarah .container-sejarah {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+/* Kontak Style */
+/* Title Style */
+.title {
+  background-color: #333; /* Background color for the title */
+  color: #fff; /* Text color */
+  text-align: left; 
+  padding: 20px 0; /* Padding around the title */
+  padding-left: 180px; /* Adjusted left padding */
+  margin-bottom: 30px; /* Space below the title */
+  border-bottom: 5px solid #f0f0f0; /* Border below the title */
+}
+
+.container-kontak {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  max-width: 1200px;
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 0 20px;
+  min-height: 100vh; /* Ensures the container takes up full viewport height */
+}
+
+
+.contact-details {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 150px; /* Space between the columns */
+  padding-bottom: 80px; /* Space below the contact details */
+}
+
+.contact-details div {
+  width: 30%; /* Each column width */
+}
+
+.contact-details h2 {
+  margin-top: 0;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px; /* Space below the subheadings */
+}
+
+.contact-details p,
+.contact-details a {
+  margin: 10px 0; /* Spacing for paragraphs and links */
+}
+
+.contact-details .social-media ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+.contact-details .social-media li {
+  margin-bottom: 10px; /* Space between social media items */
+}
+
+.contact-details .social-media img {
+  width: 24px; /* Icon size */
+  vertical-align: middle; /* Align icons with text */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 768px) {
+  .contact-title {
+    padding-left: 40px; /* Reduce padding on smaller screens */
+  }
+
+  .contact-details {
+    flex-direction: column; /* Stack the columns vertically */
+    gap: 40px; /* Reduce the gap between sections */
+    padding-bottom: 40px; /* Reduce bottom padding */
+  }
+
+  .contact-details div {
+    width: 100%; /* Make each column full-width */
+    text-align: center; /* Center text for better presentation */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-title {
+    padding-left: 20px; /* Further reduce padding */
+  }
+
+  .contact-details {
+    gap: 20px; /* Further reduce the gap between sections */
+    padding-bottom: 20px; /* Further reduce bottom padding */
+  }
+
+  .contact-details h2 {
+    font-size: 1.5em; /* Adjust heading size for small screens */
+  }
+
+  .contact-details p,
+  .contact-details a {
+    font-size: 1em; /* Adjust paragraph and link size */
+  }
+}
+
+/* Section picture-caption in about*/
+.picture-caption-left {
+  padding: 60px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align content to the left */
+}
+
+.picture-caption-right {
+  padding: 60px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align content to the right */
+}
+
+
+.picture-caption-left .container-pc-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align content to the left */
+  max-width: 1200px;
+  gap: 20px;
+  margin-bottom: 40px;
+  padding-left: 180px; /* Adjust the left padding to control the position */
+}
+
+.picture-caption-right .container-pc-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align content to the right */
+  max-width: 1200px;
+  gap: 20px;
+  margin-bottom: 40px;
+  padding-right: 180px; /* Adjust the right padding to control the position */
+}
+
+.picture-caption-image img {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.picture-caption-content {
+  max-width: 600px;
+}
+
+.picture-caption-content h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem; /* Updated to rem */
+  color: #333;
+}
+
+.picture-caption-content p {
+  font-size: 1.125rem; /* Updated to rem */
+  color: #555;
+  font-style: italic;
+}
+
+/*right*/
+.picture-caption-right .picture-caption-image {
+  order: 2; /* Move image to the right */
+}
+
+.picture-caption-right .picture-caption-content-right {
+  max-width: 600px;
+  text-align: right; /* Align text to the right */
+}
+
+.picture-caption-right .picture-caption-content-right h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem; /* Updated to rem */
+  color: #333;
+}
+
+.picture-caption-right .picture-caption-content-right p {
+  font-size: 1.125rem; /* Updated to rem */
+  color: #555;
+  font-style: italic;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .picture-caption-left .container-pc-left {
+    flex-direction: column;
+    align-items: flex-start; /* Keep alignment consistent */
+    padding-left: 20px; /* Reduce padding on smaller screens */
+    gap: 10px; /* Adjust gap for smaller screens */
+  }
+
+  .picture-caption-right .container-pc-right {
+    flex-direction: column;
+    align-items: flex-end; /* Align items to the right on smaller screens */
+    padding-right: 20px; /* Reduce padding on smaller screens */
+    gap: 10px; /* Adjust gap for smaller screens */
+  }
+
+  .picture-caption-image img {
+    width: 120px; /* Adjust image size on smaller screens */
+  }
+
+  .picture-caption-content {
+    max-width: 100%;
+  }
+
+  .picture-caption-content h3 {
+    font-size: 1.25rem; /* Adjust heading size */
+  }
+
+  .picture-caption-content p {
+    font-size: 1rem; /* Adjust paragraph size */
+  }
+
+  /*right*/
+  .picture-caption-right .picture-caption-image {
+    width: 120px; /* Adjust image size on smaller screens */
+  }
+
+  .picture-caption-right .picture-caption-content {
+    max-width: 100%;
+    text-align: right; /* Keep text aligned to the right */
+  }
+
+  .picture-caption-right .picture-caption-content h3 {
+    font-size: 1.25rem; /* Adjust heading size */
+  }
+
+  .picture-caption-right .picture-caption-content p {
+    font-size: 1rem; /* Adjust paragraph size */
+  }
+}
+
+
+
+
+
+
