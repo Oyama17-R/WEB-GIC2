@@ -39,14 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 10000); // Change slide every 10 seconds
     }
 
-    // Toggle Menu
-    function toggleMenu() {
-        const header = document.querySelector('header');
-        if (header) {
-            header.classList.toggle('menu-open');
-        }
-    }
-
     // Scroll-triggered animations
     const testimonialSections = document.querySelectorAll('.testimonial-left, .testimonial-right');
     if (testimonialSections.length > 0) {
@@ -65,3 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Toggle Menu
+    function toggleMenu() {
+        const header = document.querySelector('header');
+        if (header) {
+            header.classList.toggle('menu-open');
+        }
+    }
